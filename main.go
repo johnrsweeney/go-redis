@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/files"
-	"github.com/johnrsweeney/go-redis/docs"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	swaggerfiles "github.com/swaggo/files"
+	docs "github.com/johnrsweeney/go-redis/docs"
 )
 
 // @title Status API
@@ -59,9 +59,12 @@ func setStatus(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	docs.SwaggerInfo.BasePath = "/"
 
 	router.GET("/setstatus", setStatus)
 	router.GET("/status", getStatus)
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
 	router.Run("0.0.0.0:8080")
 }
