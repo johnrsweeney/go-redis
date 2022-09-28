@@ -5,8 +5,26 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/files"
+	"github.com/johnrsweeney/go-redis"
 )
 
+// @title Status API
+// @version 0.1.0
+// @description Cruising' and Bruisin'
+
+// @host 18.170.214.52
+// @BaseBath /
+
+// @Summary get status
+// @Schemeds
+// @Descriptions no dunking
+// @Tags noTag
+// @Accept json
+// @Produce json
+// Success 200
+// @Router /status [get]
 func getStatus(c *gin.Context) {
 	client := redis.NewClient(&redis.Options{
 		Addr: "0.0.0.0:6379",
@@ -41,11 +59,10 @@ func setStatus(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-//	router.SetTrustedProxies([]string{"172.0.0.1"})
 
 	router.GET("/setstatus", setStatus)
 	router.GET("/status", getStatus)
 
-	router.Run(":80")
+	router.Run("0.0.0.0:8080")
 }
 
