@@ -7,7 +7,7 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/files"
-	"github.com/johnrsweeney/go-redis"
+	"github.com/johnrsweeney/go-redis/docs"
 )
 
 // @title Status API
