@@ -5,10 +5,29 @@ info:
   title: Status API
   version: 0.1.0
 paths:
+  /setstatus:
+    get:
+      consumes:
+      - application/json
+      description: no bare feet
+      parameters:
+      - description: Value to set status
+        in: query
+        name: status
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: set status
+      tags:
+      - noTag
   /status:
     get:
       consumes:
       - application/json
+      description: no dunking
       produces:
       - application/json
       responses: {}

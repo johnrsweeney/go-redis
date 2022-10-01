@@ -10,21 +10,21 @@ import (
 	docs "github.com/johnrsweeney/go-redis/docs"
 )
 
-// @title Status API
-// @version 0.1.0
+// @title       Status API
+// @version     0.1.0
 // @description Cruising' and Bruisin'
 
-// @host 18.170.214.52
+// @host     18.170.214.52
 // @BaseBath /
 
 // @Summary get status
-// @Schemeds
-// @Descriptions no dunking
-// @Tags noTag
-// @Accept json
-// @Produce json
+// @Schemes
+// @Description no dunking
+// @Tags        noTag
+// @Accept      json
+// @Produce     json
 // Success 200
-// @Router /status [get]
+// @Router      /status [get]
 func getStatus(c *gin.Context) {
 	client := redis.NewClient(&redis.Options{
 		Addr: "0.0.0.0:6379",
@@ -42,6 +42,15 @@ func getStatus(c *gin.Context) {
 	})
 }
 
+// @Summary set status
+// @Schemes
+// @Description no bare feet
+// @tags        noTag
+// @Accept      json
+// @Param       status	query string false "Value to set status"
+// @Produce     json
+// @Success     200
+// @Router      /setstatus [get]
 func setStatus(c *gin.Context) {
 	client := redis.NewClient(&redis.Options{
 		Addr: "0.0.0.0:6379",
@@ -66,6 +75,6 @@ func main() {
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
-	router.Run("0.0.0.0:8080")
+	router.Run("0.0.0.0:80")
 }
 

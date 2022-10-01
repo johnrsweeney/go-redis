@@ -16,8 +16,37 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/setstatus": {
+            "get": {
+                "description": "no bare feet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "noTag"
+                ],
+                "summary": "set status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Value to set status",
+                        "name": "status",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/status": {
             "get": {
+                "description": "no dunking",
                 "consumes": [
                     "application/json"
                 ],
