@@ -1,0 +1,9 @@
+groups:
+  - name: request served
+    rules:
+      - alert: RequestServed
+        expr: increase(requests_processed[1m]) > 0
+        labels:
+          severity: email
+        annotations:
+          summary: An API request was served
